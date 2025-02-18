@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Button from '@mui/material/Button';
+
+import './App.css';
+import Barra from "./components/navbar/Barra";
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    <h1>Hola</h1>
-    <Button variant="outlined">Primary</Button>
+    <Barra/>
+    <ItemListContainer mensaje={"Prueba1"}/>
+    <ItemListContainer mensaje={"Prueba2"}/>
+    <ItemListContainer mensaje={"Prueba3"}/>
+    
     </>
   )
 }
