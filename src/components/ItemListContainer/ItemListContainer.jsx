@@ -1,6 +1,7 @@
 import { colors } from '@mui/material'
 import React from 'react'
 import { useEffect, useState } from 'react';
+import ItemList from './iItemList';
 import styles from './ItemList.module.css'
 
 
@@ -19,20 +20,7 @@ function ItemListContainer (){
 }, [])
 
 return (
-
-<div className={styles.cardcontainer}>
-
-{
-    productos.map((producto) => (
-        <div key={producto.id} className={styles.card} >
-            <h3 className={styles.title}>{producto.title}</h3> 
-            <p className={styles.description}>{producto.description}</p>
-            <p className={styles.price}><strong>${producto.price}</strong></p>
-        </div>
-    ))
-}
-
-</div>
+    <ItemList productos={productos} />
 )
   
 }
