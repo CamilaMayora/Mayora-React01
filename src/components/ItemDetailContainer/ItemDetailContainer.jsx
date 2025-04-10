@@ -1,22 +1,57 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react"; 
 import ItemDetail from "./ItemDetail";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firabese/client";
 
 const ItemDetailContainer = () => {
-    const { id } = useParams()
-    const [producto, setProducto] = useState(null)
+    const { id } = useParams();
+    const [product, setProduct] = useState();
+
 
     useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-        .then(response => response.json())
-        .then(json => setProducto(json))
-        .catch(error => console.log("Error al cargar el producto:", error))
-    }, [id])
+    const getProduct = async () => {
+        try {
+        const productRef = doc(db, "products", id);
+        const snapshot = await getDoc(productRef);
 
-  
-    return (
-        <ItemDetail producto={producto} />
-    );
-  };
-  
-  export default ItemDetailContainer;
+        if (snapshot.exists()) {
+            const productData = { id: snapshot.id, ...snapshot.data() };
+            setProduct(productData);
+        }
+        } catch (error) {
+        console.error("Error product:", error);
+        }
+    };
+
+    getProduct();
+    }, [id]);
+
+
+
+    return <ItemDetail producto={product} />;
+};
+
+export default ItemDetailContainer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

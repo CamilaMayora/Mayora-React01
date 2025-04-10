@@ -4,23 +4,26 @@ import styles from './ItemList.module.css'
 
 
 
-const ItemList = ({ productos }) => {
-    return (
-      <div className={styles.cardcontainer}>
+const ItemList = ({ products }) => {
+  if (!products || products.length === 0) {
+    return <p className={styles.carga}>
+      cargando...</p>;
+  }
+  return (
+    <div className={styles.cardcontainer}>
+      {products.map((product) => (
+        <Link to={`/item/${product.id}`} key={product.id}>
+          <div className={styles.card}>
+            <h3 className={styles.title}>{product.title}</h3>
+            <p className={styles.price}>
+              <strong>${product.price}</strong>
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+};
 
-        {productos.map((producto) => (
 
-          <Link to={`/item/${producto.id}`} key={producto.id}>
-            <div className={styles.card}>
-            <h3 className={styles.title}>{producto.title}</h3> 
-            <p className={styles.price}><strong>${producto.price}</strong></p>
-            </div>
-          </Link>
-        ))}
-      </div>
-    );
-  };
-  
-
-
-export default ItemList;
+export default ItemList

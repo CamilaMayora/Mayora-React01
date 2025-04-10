@@ -3,8 +3,16 @@
 *{
     font-family: Poppins;
 }
+
+.carga{
+  text-align: center;
+font-size: 1.3rem;
+padding: 3rem;
+color: #8d6e63;
+}
+
 .card {
-    background-color:  #533e28;
+    background-color:  #d7b899de;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 16px;
@@ -23,7 +31,7 @@
     font-weight: 800;
     margin-bottom: 8px;
     color: rgb(0, 0, 0);
-    text-shadow: whitesmoke 1px 1px 1px;
+    text-shadow: rgb(116, 70, 12) 1px 5px 3px;
     text-align: center;
   }
   
